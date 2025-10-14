@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOS Fitness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    @keyframes zoom {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .text-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    .text-shadow-sm { text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        container: {
+          center: true,
+          padding: '1rem',
+          screens: {
+            sm: '640px',
+            md: '768px',
+            lg: '1024px',
+            xl: '1280px',
+          },
+        },
+        extend: {
+          fontFamily: {
+            sans: ['Kanit', 'sans-serif'],
+          },
+          colors: {
+            'kos-orange': '#F97316',
+            'kos-dark': '#18181b',
+            'kos-darker': '#09090b',
+            border: 'hsl(240 3.7% 15.9%)',
+          }
+        }
+      }
+    }
+  </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+<body class="bg-kos-dark text-white font-sans antialiased">
+  <div id="root"></div>
+
+  <script type="text/babel" data-type="module">
+    import React, { useState } from 'react';
+    import ReactDOM from 'react-dom/client';
+
+    // --- Components ---
+
+    const NavLink = ({ href, children }) => (
+      <li>
+        <a href={href} className="text-gray-300 hover:text-white transition-colors duration-200">
+          {children}
+        </a>
+      </li>
+    );
+
+    const Header = () => {
+      const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+      const navItems = [
+        { href: '#', label: 'หน้าแรก' },
+        { href: '#features', label: 'ทำไมต้องเรา' },
+        { href: '#clubs', label: 'คลับ' },
+        { href: '#pricing', label: 'สมาชิก' },
+      ];
+
+      return (
+        <header className="fixed top-0 left-0 right-0 z-50 bg-kos-dark/80 backdrop-blur-sm border-b border-white/10">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-between items-center h-20">
+              <a href="#" className="text-2xl font-black tracking-wide">
+                KOS <span className="text-kos-orange">FITNESS</span>
+              </a>
+
+              <nav className="hidden lg:block">
+                <ul className="flex items-center space-x-8">
+                  {navItems.map((item) => (
+                    <NavLink key={item.label} href={item.href}>{item.label}</NavLink>
+                  ))}
+                </ul>
+              </nav>
+
+              <div className="hidden lg:flex items-center space-x-3">
+                <a href="/kos_fitness/auth/login.php" className="px-5 py-2 text-sm font-semibold rounded-full border border-gray-600 hover:bg-gray-800 transition-colors duration-200">
+                  เข้าสู่ระบบ
+                </a>
+                <a href="/kos_fitness/auth/register.php" className="px-5 py-2 text-sm font-semibold text-white bg-kos-orange rounded-full hover:bg-orange-600 transition-colors duration-200">
+                  สมัครสมาชิก
+                </a>
+              </div>
+
+              <div className="lg:hidden">
+                <button
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label="เมนู"
+                  className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-kos-orange"
+                >
+                  {isMenuOpen ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {isMenuOpen && (
+            <div className="lg:hidden bg-kos-dark border-t border-white/10">
+              <div className="px-4 pt-2 pb-4 space-y-2">
+                {navItems.map((item) => (
+                  <a key={item.label} href={item.href} className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">
+                    {item.label}
+                  </a>
+                ))}
+                 <div className="border-t border-gray-700 pt-4 space-y-3">
+                  <a href="/kos_fitness/auth/login.php" className="block text-center w-full px-5 py-2 text-sm font-semibold rounded-full border border-gray-600 hover:bg-gray-800 transition-colors duration-200">
+                    เข้าสู่ระบบ
+                  </a>
+                  <a href="/kos_fitness/auth/register.php" className="block text-center w-full px-5 py-2 text-sm font-semibold text-white bg-kos-orange rounded-full hover:bg-orange-600 transition-colors duration-200">
+                    สมัครสมาชิก
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+        </header>
+      );
+    };
+
+    const Hero = () => {
+      return (
+        <section className="relative min-h-screen flex items-center justify-center text-center px-4 pt-20 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('https://img5.pic.in.th/file/secure-sv1/black-white-photo-muscular-build-man-using-sports-chalk-while-before-lifting-barbell-weight-training-gym.jpg')", animation: 'zoom 15s ease-in-out infinite' }}
+          ></div>
+          <div className="absolute inset-0 bg-black/70"></div>
+          <div className="relative z-10 flex flex-col items-center" style={{ animation: 'fadeInUp 1s ease-out forwards' }}>
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-extrabold leading-tight tracking-tighter text-shadow">
+              MEMBERSHIP ที่ใช่สำหรับคุณ
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg md:text-xl text-gray-200 text-shadow-sm">
+              เริ่มต้นเส้นทางสู่สุขภาพที่ดีกว่ากับ KOS Fitness วันนี้!
+            </p>
+            <div className="mt-10">
+              <a
+                href="/kos_fitness/auth/register.php"
+                className="px-8 py-4 text-lg font-bold text-white bg-kos-orange rounded-full shadow-lg shadow-orange-500/30 hover:bg-orange-600 transform hover:-translate-y-1.5 transition-all duration-300"
+              >
+                สมัครสมาชิก
+              </a>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const FeatureCard = ({ icon, title, description }) => (
+      <div className="bg-kos-darker border border-border rounded-2xl p-8 text-center flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300 group hover:border-kos-orange/50 hover:bg-gradient-to-br from-kos-darker to-kos-dark">
+        <div className="text-kos-orange mb-5 transition-transform duration-300 group-hover:scale-110">
+          {icon}
+        </div>
+        <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+        <p className="text-gray-400 leading-relaxed">{description}</p>
+      </div>
+    );
+
+    const Features = () => {
+      const featuresData = [
+        {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+          title: "เปิด 24 ชั่วโมง",
+          description: "ออกกำลังกายได้ทุกเวลาที่คุณต้องการ ไม่ว่าจะเป็นกลางวันหรือกลางคืน"
+        },
+        {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3" /></svg>,
+          title: "ไม่มีสัญญาผูกมัด",
+          description: "อิสระในการเป็นสมาชิกโดยไม่มีสัญญาผูกมัดระยะยาว"
+        },
+        {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.122-1.28-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.122-1.28.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+          title: "สังคมที่ดี",
+          description: "เข้าร่วมฟิตเนสพร้อมเพื่อนๆเพื่อความสนุกและผลลัพธ์ที่ดีที่สุด"
+        },
+        {
+          icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.293 2.293a1 1 0 010 1.414L15 12l-2.293-2.293a1 1 0 010-1.414L15 6m-5 16l2.293-2.293a1 1 0 000-1.414L10 12l-2.293 2.293a1 1 0 01-1.414 0L6 15m12-4l-2.293 2.293a1 1 0 01-1.414 0L12 9l2.293-2.293a1 1 0 011.414 0L18 9z" /></svg>,
+          title: "อุปกรณ์ที่ทันสมัย",
+          description: "เรามีอุปกรณ์ออกกำลังกายที่ทันสมัยและครบครันสำหรับทุกเป้าหมาย"
+        }
+      ];
+
+      return (
+        <section id="features" className="bg-kos-darker py-20 lg:py-28">
+          <div className="container">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold">ทำไมต้อง KOS Fitness?</h2>
+              <p className="mt-4 text-lg text-gray-400">
+                เรามอบประสบการณ์ฟิตเนสที่เหนือกว่า ให้คุณบรรลุเป้าหมายได้อย่างไร้ขีดจำกัด
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {featuresData.map((feature) => (
+                <FeatureCard key={feature.title} {...feature} />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const ClubFinder = () => {
+  return (
+    <section id="clubs" className="py-20 lg:py-28 overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          <div className="text-center md:text-left">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">สาขา คลองหก (RMUTT)</h2>
+            <p className="text-gray-300 mb-6 leading-relaxed">
+              ที่ตั้ง: มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี (คลองหก)<br />
+              ฟิตเนสขนาดใหญ่ อุปกรณ์ครบ เปิดบริการ 24 ชั่วโมง มีที่จอดรถสะดวก และเทรนเนอร์มืออาชีพคอยให้คำแนะนำ
+            </p>
+            <ul className="space-y-2 text-gray-300 text-left inline-block">
+              <CheckListItem> เปิดบริการ 24 ชม.</CheckListItem>
+              <CheckListItem> ที่จอดรถสะดวก</CheckListItem>
+              <CheckListItem> อุปกรณ์ครบทุกชนิด</CheckListItem>
+              <CheckListItem> เทรนเนอร์มืออาชีพ</CheckListItem>
+            </ul>
+          </div>
+
+          <div className="rounded-2xl overflow-hidden border border-gray-700 shadow-2xl relative">
+            <iframe
+              src="https://www.google.com/maps?q=มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี%20คลองหก&output=embed"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              className="rounded-2xl"
+              title="RMUTT Khlong 6 map"
+            />
+            <div className="absolute -inset-4 bg-orange-500/10 blur-2xl rounded-3xl"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+    const CheckListItem = ({ children }) => (
+      <li className="flex items-start">
+        <svg className="flex-shrink-0 h-6 w-6 text-kos-orange mr-3 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        </svg>
+        <span className="text-gray-300">{children}</span>
+      </li>
+    );
+
+    const Pricing = () => {
+      return (
+        <section id="pricing" className="bg-kos-darker py-20 lg:py-28">
+          <div className="container">
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-4xl lg:text-5xl font-bold">เลือก Membership ที่เหมาะกับคุณ</h2>
+              <p className="mt-4 text-lg text-gray-400 leading-relaxed">
+                เรามีแพ็กเกจที่ยืดหยุ่น ตอบโจทย์ทุกไลฟ์สไตล์และเป้าหมายการออกกำลังกายของคุณ
+              </p>
+            </div>
+            <div className="mt-16 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
+              {/* Standard Plan */}
+              <div className="bg-kos-dark border border-border rounded-2xl p-8 flex flex-col transition-all duration-300 hover:border-gray-700 hover:shadow-xl">
+                <h3 className="text-2xl font-bold text-white">Standard Access</h3>
+                <p className="mt-4 text-4xl font-extrabold text-white">
+                  1,600 <span className="text-lg font-medium text-gray-400">บาท/เดือน</span>
+                </p>
+                <ul className="mt-8 space-y-4 text-lg">
+                  <CheckListItem>เข้าใช้บริการได้ 24 ชั่วโมง</CheckListItem>
+                  <CheckListItem>ไม่มีสัญญาผูกมัด</CheckListItem>
+                  <CheckListItem>เข้าใช้บริการได้ทุกสาขาทั่วประเทศ</CheckListItem>
+                </ul>
+                <a href="#" className="mt-auto w-full text-center px-6 py-3 font-semibold bg-gray-700 rounded-full hover:bg-gray-600 transition-colors duration-200 mt-10">
+                  สมัครเลย
+                </a>
+              </div>
+
+              {/* Premium Plan */}
+              <div className="relative bg-kos-dark rounded-2xl p-8 flex flex-col border-2 border-kos-orange">
+                <div className="absolute top-0 right-8 -translate-y-1/2">
+                  <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider text-white bg-kos-orange">
+                    คุ้มที่สุด
+                  </span>
+                </div>
+                <div className="absolute -inset-2 bg-kos-orange/20 blur-xl rounded-3xl -z-10"></div>
+                <h3 className="text-3xl font-bold text-white">Premium Access</h3>
+                <div className="flex items-baseline mt-4">
+                    <span className="text-5xl font-extrabold text-kos-orange">2,400</span>
+                    <span className="ml-2 text-lg font-medium text-gray-400">บาท/เดือน</span>
+                </div>
+                <p className="mt-1 text-gray-400">จากปกติ <span className="line-through">2,800 บาท</span></p>
+
+                <span className="mt-4 inline-block bg-orange-500/10 text-orange-400 text-sm font-medium px-3 py-1 rounded-full self-start">
+                  ลดราคาพิเศษวันนี้เท่านั้น!
+                </span>
+                
+                <ul className="mt-8 space-y-4 text-lg">
+                  <CheckListItem><strong>สิทธิประโยชน์ทั้งหมดของ Standard</strong></CheckListItem>
+                  <CheckListItem>เครื่องดื่มโปรตีน 2 แก้ว/เดือน</CheckListItem>
+                  <CheckListItem>สิทธิ์พาเพื่อนมาฟรี 2 ครั้ง/เดือน</CheckListItem>
+                </ul>
+                 <a href="#" className="mt-auto w-full text-center px-6 py-4 font-semibold text-white bg-kos-orange rounded-full hover:bg-orange-600 transition-colors duration-200 mt-10">
+                  สมัครแบบ Premium
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const FooterLink = ({ href, children }) => (
+      <li>
+        <a href={href} className="text-gray-400 hover:text-kos-orange transition-colors duration-200">
+          {children}
+        </a>
+      </li>
+    );
+
+    const SocialIcon = ({ href, iconPath, label }) => (
+        <a href={href} aria-label={label} className="text-gray-400 hover:text-white transition-colors">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d={iconPath} />
+            </svg>
+        </a>
+    );
+
+    const Footer = () => {
+      return (
+        <footer className="bg-kos-darker border-t border-gray-800">
+          <div className="container mx-auto px-4 pt-16 pb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div className="md:col-span-2 lg:col-span-1">
+                 <a href="#" className="text-2xl font-black tracking-wide">
+                    KOS <span className="text-kos-orange">FITNESS</span>
+                </a>
+                <p className="mt-4 text-gray-400">
+                  ฟิตเนสที่ใช่สำหรับคุณ — สุขภาพดี เริ่มได้ทุกวัน
+                </p>
+                 <div className="mt-6 flex space-x-5">
+                    <SocialIcon href="#" label="Facebook" iconPath="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z" />
+                    <SocialIcon href="#" label="Instagram" iconPath="M12 2C8.7 2 8.3 2.02 7.1 2.07c-1.2.05-2.07.27-2.8.58-.75.3-1.38.7-1.98 1.3C1.7 4.58 1.3 5.2.98 5.95c-.3.73-.53 1.6-.58 2.8C.35 9.95.33 10.3.33 12s.02 2.05.07 3.25c.05 1.2.27 2.07.58 2.8.3.75.7 1.38 1.3 1.98.6.6 1.23.98 1.98 1.3.73.3 1.6.53 2.8.58 1.2.05 1.6.07 4.9.07s3.7-.02 4.9-.07c1.2-.05 2.07-.27 2.8-.58.75-.3 1.38-.7 1.98-1.3.6-.6.98-1.23 1.3-1.98.3-.73.53-1.6.58-2.8.05-1.2.07-1.6.07-4.9s-.02-3.7-.07-4.9c-.05-1.2-.27-2.07-.58-2.8-.3-.75-.7-1.38-1.3-1.98-.6-.6-1.23-.98-1.98-1.3-.73-.3-1.6-.53-2.8-.58C16.1 2.02 15.7 2 12 2zm0 1.8c3.2 0 3.58.01 4.84.07 1.1.05 1.75.25 2.15.4.5.2 1.05.6 1.45 1 .4.4.8 1 1 1.45.15.4.35 1.05.4 2.15.06 1.26.07 1.64.07 4.84s-.01 3.58-.07 4.84c-.05 1.1-.25 1.75-.4 2.15-.2.5-.6 1.05-1 1.45-.4.4-1 .8-1.45 1-.4.15-1.05.35-2.15.4-1.26.06-1.64.07-4.84.07s-3.58-.01-4.84-.07c-1.1-.05-1.75-.25-2.15-.4-.5-.2-1.05-.6-1.45-1-.4-.4-.8-1-1-1.45-.15-.4-.35-1.05-.4-2.15C3.81 15.58 3.8 15.2 3.8 12s.01-3.58.07-4.84c.05-1.1.25-1.75.4-2.15.2-.5.6-1.05 1-1.45.4-.4 1-.8 1.45-1 .4-.15 1.05-.35 2.15-.4C8.42 3.81 8.8 3.8 12 3.8zm0 4.1c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8.2c-1.77 0-3.2-1.43-3.2-3.2s1.43-3.2 3.2-3.2 3.2 1.43 3.2 3.2-1.43 3.2-3.2 3.2zm6.2-8.5c-.7 0-1.25-.55-1.25-1.25s.55-1.25 1.25-1.25 1.25.55 1.25 1.25-.55 1.25-1.25 1.25z" />
+                    <SocialIcon href="#" label="YouTube" iconPath="M21.58 7.19c-.23-.86-.9-1.52-1.76-1.75C18.26 5 12 5 12 5s-6.26 0-7.82.44c-.86.23-1.52.9-1.76 1.75C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.9 1.52 1.76 1.75C5.74 19 12 19 12 19s6.26 0 7.82-.44c.86-.23 1.52-.9 1.76-1.75C22 15.25 22 12 22 12s0-3.25-.42-4.81zM9.5 15.5V8.5l6 3.5-6 3.5z" />
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold text-white">เกี่ยวกับเรา</h4>
+                <ul className="mt-4 space-y-3">
+                  <FooterLink href="#">เรื่องราวของเรา</FooterLink>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold text-white">บริการ</h4>
+                <ul className="mt-4 space-y-3">
+                  <FooterLink href="#pricing">สมัครสมาชิก</FooterLink>
+                  <FooterLink href="#clubs">คลับใกล้คุณ</FooterLink>
+                  <FooterLink href="#">โปรโมชั่น</FooterLink>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold text-white">ข้อมูลเพิ่มเติม</h4>
+                <ul className="mt-4 space-y-3">
+                  <FooterLink href="#">คำถามที่พบบ่อย</FooterLink>
+                  <FooterLink href="#">นโยบายความเป็นส่วนตัว</FooterLink>
+                  <FooterLink href="#">ข้อกำหนดและเงื่อนไข</FooterLink>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="mt-16 pt-8 border-t border-gray-800 text-center text-gray-500">
+              <p>&copy; {new Date().getFullYear()} KOS Fitness. All Rights Reserved.</p>
+            </div>
+          </div>
+        </footer>
+      );
+    };
+
+    const App = () => {
+      return (
+        <div className="bg-kos-dark">
+          <Header />
+          <main>
+            <Hero />
+            <Features />
+            <ClubFinder />
+            <Pricing />
+          </main>
+          <Footer />
+        </div>
+      );
+    };
+
+    // --- App Mounting ---
+    const rootElement = document.getElementById('root');
+    if (!rootElement) {
+      throw new Error("Could not find root element to mount to");
+    }
+
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+
+  </script>
+</body>
+</html>

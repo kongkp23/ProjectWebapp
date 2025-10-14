@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KOS Fitness — ระบบสมาชิกฟิตเนส</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Kanit',sans-serif}
+    .glass{background:rgba(24,24,27,.65);backdrop-filter:blur(8px)}
+    .grid-autofit{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+  </style>
+</head>
+<body class="bg-[#18181b] text-white">
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="/kos_fitness/index.html" class="text-2xl font-extrabold">KOS <span class="text-orange-500">FITNESS</span></a>
+        <nav class="hidden md:block">
+          <ul class="flex items-center gap-6 text-gray-300">
+            <li><a class="hover:text-white" href="/kos_fitness/index.html">หน้าแรก</a></li>
+            <li><a class="hover:text-white" href="/kos_fitness/packages/select_package.php">แพ็กเกจสมาชิก</a></li>
+            <li><a class="hover:text-white" href="/kos_fitness/member/card.php">บัตรสมาชิก</a></li>
+            <li class="relative group">
+              <span class="cursor-default">จัดการ ▾</span>
+              <div class="absolute hidden group-hover:block bg-[#09090b] border border-white/10 rounded-md mt-2 w-56">
+                <a class="block px-4 py-2 hover:bg-white/5" href="/kos_fitness/member/list.php">ค้นหา/แก้ไข/ลบ สมาชิก</a>
+                <a class="block px-4 py-2 hover:bg-white/5" href="/kos_fitness/member/add.php">เพิ่มสมาชิก (Admin)</a>
+                <a class="block px-4 py-2 hover:bg-white/5" href="/kos_fitness/reports/members_by_package.php">รายงาน: สมาชิกตามแพ็กเกจ</a>
+                <a class="block px-4 py-2 hover:bg-white/5" href="/kos_fitness/reports/revenue_by_month.php">รายงาน: รายได้รายเดือน</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a class="px-4 py-1.5 rounded-full border border-gray-600 hover:bg-gray-800" href="/kos_fitness/auth/login.php">เข้าสู่ระบบ</a>
+          <a class="px-4 py-1.5 rounded-full bg-orange-500 hover:bg-orange-600" href="/kos_fitness/auth/register.php">สมัครสมาชิก</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- HERO -->
+    <section class="container mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">ฟิตได้ทุกวัน <span class="text-orange-500">เริ่มตอนนี้</span></h1>
+          <p class="mt-4 text-gray-300">สมัครสมาชิก กดเลือกแพ็กเกจ แล้วรับบัตรสมาชิกดิจิทัล ใช้ได้ทุกสาขา</p>
+          <div class="mt-6 flex gap-3">
+            <a class="px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600" href="/kos_fitness/auth/register.php">สมัครสมาชิก</a>
+            <a class="px-6 py-3 rounded-full bg-gray-700 hover:bg-gray-600" href="/kos_fitness/auth/login.php">เข้าสู่ระบบ</a>
+          </div>
+          <div class="mt-4 text-sm text-gray-400">หรือไปที่ <a class="text-orange-400 underline" href="/kos_fitness/packages/select_package.php">หน้าเลือกแพ็กเกจ</a></div>
+        </div>
+        <div class="glass rounded-2xl border border-white/10 p-6">
+          <div class="text-gray-300">ตัวอย่างบัตรสมาชิก</div>
+          <div class="mt-3 rounded-xl p-5 bg-gradient-to-br from-[#0b0b0c] to-[#18181b] border border-white/10">
+            <div class="flex justify-between">
+              <div>
+                <div class="text-xs text-gray-400">KOS FITNESS</div>
+                <div class="text-xl font-bold">Premium Access</div>
+              </div>
+              <div class="text-right">
+                <div class="text-gray-400 text-xs">Card No.</div>
+                <div class="font-mono">KOS-2025-0001</div>
+              </div>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-4 text-gray-300 text-sm">
+              <div><span class="text-gray-400">ชื่อ</span><br>Ohm User</div>
+              <div><span class="text-gray-400">ราคา</span><br>2,300 บาท/เดือน</div>
+              <div><span class="text-gray-400">เริ่ม</span><br>2025-10-12</div>
+              <div><span class="text-gray-400">สิ้นสุด</span><br>2025-11-11</div>
+            </div>
+            <div class="mt-4 text-right">
+              <a class="text-sm text-orange-400 underline" href="/kos_fitness/member/card.php">ดูบัตรของฉัน</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="container mx-auto px-4 pb-16">
+      <h2 class="text-3xl font-extrabold mb-6">แพ็กเกจยอดนิยม</h2>
+      <div class="grid-autofit">
+        <!-- Standard -->
+        <div class="rounded-2xl border border-white/10 bg-[#0b0b0c] p-6">
+          <h3 class="text-2xl font-bold">Standard Access</h3>
+          <p class="text-4xl mt-2">1,600 <span class="text-base text-gray-400">บาท/เดือน</span></p>
+          <ul class="mt-4 list-disc list-inside text-gray-300 text-sm space-y-1">
+            <li>เข้าใช้ 24 ชม.</li>
+            <li>ไม่มีสัญญาผูกมัด</li>
+            <li>เข้าได้ทุกสาขา</li>
+          </ul>
+          <a class="mt-6 inline-block px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600"
+             href="/kos_fitness/packages/select_package.php?plan=standard">เลือก Standard</a>
+        </div>
+        <!-- Premium -->
+        <div class="rounded-2xl border border-white/10 bg-[#0b0b0c] p-6">
+          <h3 class="text-2xl font-bold">Premium Access</h3>
+          <p class="text-4xl mt-2">2,300 <span class="text-base text-gray-400">บาท/เดือน</span></p>
+          <ul class="mt-4 list-disc list-inside text-gray-300 text-sm space-y-1">
+            <li>ทั้งหมดของ Standard</li>
+            <li>โปรตีนเชค 2 แก้ว/เดือน</li>
+            <li>พาเพื่อนได้ 2 ครั้ง/เดือน</li>
+          </ul>
+          <a class="mt-6 inline-block px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600"
+             href="/kos_fitness/packages/select_package.php?plan=premium">เลือก Premium</a>
+        </div>
+      </div>
+      <p class="mt-6 text-sm text-gray-400">* ต้องเข้าสู่ระบบก่อนจึงจะเลือกแพ็กเกจและออกบัตรสมาชิกได้</p>
+    </section>
+
+    <!-- CTA ADMIN QUICK -->
+    <section class="container mx-auto px-4 pb-20">
+      <div class="glass rounded-2xl border border-white/10 p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h3 class="text-2xl font-bold">โหมดผู้ดูแลระบบ</h3>
+          <p class="text-gray-300">ค้นหา เพิ่ม แก้ไข ลบสมาชิก และดูรายงาน</p>
+        </div>
+        <div class="flex gap-3">
+          <a class="px-5 py-2 rounded-full bg-gray-700 hover:bg-gray-600" href="/kos_fitness/member/list.php">รายการสมาชิก</a>
+          <a class="px-5 py-2 rounded-full bg-gray-700 hover:bg-gray-600" href="/kos_fitness/member/add.php">เพิ่มสมาชิก</a>
+          <a class="px-5 py-2 rounded-full bg-gray-700 hover:bg-gray-600" href="/kos_fitness/reports/members_by_package.php">รายงาน 1</a>
+          <a class="px-5 py-2 rounded-full bg-gray-700 hover:bg-gray-600" href="/kos_fitness/reports/revenue_by_month.php">รายงาน 2</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-800 py-8 text-center text-gray-400">
+    <p>&copy; 2025 KOS Fitness. All Rights Reserved.</p>
+    <div class="mt-2 text-sm">
+      <a class="text-orange-400 underline" href="/kos_fitness/auth/login.php">เข้าสู่ระบบ</a> ·
+      <a class="text-orange-400 underline" href="/kos_fitness/auth/register.php">สมัครสมาชิก</a> ·
+      <a class="text-orange-400 underline" href="/kos_fitness/member/card.php">บัตรสมาชิก</a>
+    </div>
+  </footer>
+</body>
+</html>
