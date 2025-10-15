@@ -63,4 +63,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </div>
 </div>
-<?php include "../shared/footerhome.php"; ?>
+<?php include "../shared/footerdashboard.php"; ?>

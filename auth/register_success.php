@@ -73,4 +73,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<?php include "../shared/footerhome.php"; ?>
+<?php include "../shared/footerdashboard.php"; ?>

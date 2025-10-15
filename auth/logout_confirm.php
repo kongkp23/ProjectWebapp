@@ -65,4 +65,4 @@ include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/header.php';
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/footerhome.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/footerdashboard.php'; ?>
