@@ -17,7 +17,7 @@ $mem = $stmt->get_result()->fetch_assoc();
 <h1 class="page-title-card">บัตรสมาชิกของฉัน</h1>
 
 <?php if(!$mem): ?>
-  <p class="text-muted">ยังไม่มีบัตรสมาชิก <a href="/kos_fitness/packages/select_package.php">เลือกแพ็กเกจ</a> ก่อนนะ</p>
+  <p class="text-muted-nocard">ยังไม่มีบัตรสมาชิก <a href="/kos_fitness/packages/select_package.php">เลือกแพ็กเกจ</a> ก่อนนะ</p>
 <?php else: ?>
   <div class="member-card">
     <div class="member-card-header">

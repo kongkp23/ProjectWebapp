@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
   $full=$_POST['full_name']??''; $email=$_POST['email']??''; $phone=$_POST['phone']??''; $role=$_POST['role']??'user';
   $sql="UPDATE users SET full_name=?, email=?, phone=?, role=? WHERE id=?";
   $stmt=$conn->prepare($sql); $stmt->bind_param("ssssi",$full,$email,$phone,$role,$id);
-  if($stmt->execute()){ header("Location: list.php"); exit; } else $err=$conn->error;
+  if($stmt->execute()){ header("Location: edit_success.php"); exit; } else $err=$conn->error;
 }
 $u = $conn->query("SELECT * FROM users WHERE id={$id}")->fetch_assoc();
 ?>

@@ -9,5 +9,6 @@ if ($id > 0) {
     $stmt->bind_param("i", $id);
     $stmt->execute();
 }
-header("Location: list.php");
-exit;
+if ($stmt->execute()) {
+    header("Location: delete_success.php"); exit;
+}

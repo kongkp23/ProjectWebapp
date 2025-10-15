@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user'] = [
       'id'=>$stmt->insert_id,'full_name'=>$full,'email'=>$email,'phone'=>$phone,'role'=>'user'
     ];
-    header("Location: /kos_fitness/packages/select_package.php");
+    header("Location: register_success.php");
     exit;
   } else {
     $err = $conn->error;

@@ -17,7 +17,7 @@ if (isset($_POST['cancel_logout'])) {
 include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/header.php';
 ?>
 
-<div style="display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 200px); padding: 1rem;">
+<div style="display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 350px); padding: 1rem;">
     <div style="max-width: 500px; width: 100%;">
         <div class="card" style="text-align: center;">
             <!-- ไอคอนเตือน -->
@@ -57,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/header.php';
                 <button type="submit" name="confirm_logout" class="btn btn-danger btn-full">
                     ยืนยัน ออกจากระบบ
                 </button>
-                <button type="submit" name="cancel_logout" class="btn btn-outline btn-full">
+                <button type="submit" name="cancel_logout" class="btn btn-secondary btn-full ">
                     ยกเลิก
                 </button>
             </form>
@@ -65,4 +65,4 @@ include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/header.php';
     </div>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/kos_fitness/shared/footerhome.php'; ?>

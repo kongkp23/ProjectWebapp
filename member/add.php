@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
   $full=$_POST['full_name']??''; $email=$_POST['email']??''; $phone=$_POST['phone']??''; $pass=$_POST['password']??''; $role=$_POST['role']??'user';
   $sql="INSERT INTO users(full_name,email,phone,password,role) VALUES(?,?,?,?,?)";
   $stmt=$conn->prepare($sql); $stmt->bind_param("sssss",$full,$email,$phone,$pass,$role);
-  if($stmt->execute()){ header("Location: list.php"); exit; } else $err=$conn->error;
+  if($stmt->execute()){ header("Location: add_success.php"); exit; } else $err=$conn->error;
 }
 ?>
 <?php include "../shared/header.php"; ?>
