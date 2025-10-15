@@ -10,6 +10,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 $u = $conn->query("SELECT * FROM users WHERE id={$id}")->fetch_assoc();
 ?>
 <?php include "../shared/header.php"; ?>
+<br>
 <div class="form-container">
     <h1 class="page-title">แก้ไขสมาชิก #<?=$id?></h1>
     <?php if(!$u):?><p>ไม่พบข้อมูล</p><?php include "../shared/footer.php"; exit; endif;?>
@@ -27,4 +28,4 @@ $u = $conn->query("SELECT * FROM users WHERE id={$id}")->fetch_assoc();
         <button class="btn btn-primary">บันทึก</button>
     </form>
 </div>
-<?php include "../shared/footer.php"; ?>
+<?php include "../shared/footerhome.php"; ?>

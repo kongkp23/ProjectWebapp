@@ -2,7 +2,7 @@
 require_once "../includes/conn.php";
 require_once "../includes/auth.php";
 require_admin();
-
+echo "<br>";
 $q = trim($_GET['q'] ?? '');
 $sql = "SELECT u.id, u.full_name, u.email, u.phone, u.role, p.name AS package_name
         FROM users u
@@ -69,4 +69,4 @@ $users = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 </table>
 </div>
 
-<?php include "../shared/footer.php"; ?>
+<?php include "../shared/footerhome.php"; ?>

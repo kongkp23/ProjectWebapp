@@ -47,4 +47,4 @@ if (!$mem) { header("Location: /kos_fitness/home.php"); exit; }
   </div>
 </div>
 
-<?php include "../shared/footer.php"; ?>
+<?php include "../shared/footerhome.php"; ?>

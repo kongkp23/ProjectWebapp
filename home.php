@@ -2,7 +2,7 @@
 require_once __DIR__."/includes/conn.php";
 require_once __DIR__."/includes/auth.php";
 require_login();
-
+echo "<br>";
 $uid = $_SESSION['user']['id'];
 
 $sql = "SELECT m.*, p.name AS package_name, p.price
@@ -94,4 +94,4 @@ if ($mem) {
   </div>
 </section>
 
-<?php include __DIR__."/shared/footer.php"; ?>
+<?php include __DIR__."/shared/footerhome.php"; ?>

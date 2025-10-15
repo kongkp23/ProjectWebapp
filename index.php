@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body class="landing-page">
 
@@ -70,10 +71,10 @@
           <p class="section-subtitle">เรามอบประสบการณ์ฟิตเนสที่เหนือกว่า ให้คุณบรรลุเป้าหมายได้อย่างไร้ขีดจำกัด</p>
         </div>
         <div class="features-grid">
-            <div class="feature-card"><h3>เปิด 24 ชั่วโมง</h3><p>ออกกำลังกายได้ทุกเวลาที่คุณต้องการ</p></div>
-            <div class="feature-card"><h3>ไม่มีสัญญาผูกมัด</h3><p>อิสระในการเป็นสมาชิกโดยไม่มีสัญญาผูกมัด</p></div>
-            <div class="feature-card"><h3>สังคมที่ดี</h3><p>เข้าร่วมฟิตเนสพร้อมเพื่อนๆเพื่อความสนุก</p></div>
-            <div class="feature-card"><h3>อุปกรณ์ที่ทันสมัย</h3><p>เรามีอุปกรณ์ออกกำลังกายที่ทันสมัยและครบครัน</p></div>
+            <div class="feature-card"><i class="fa-regular fa-clock"></i><h3>เปิด 24 ชั่วโมง</h3><p>ออกกำลังกายได้ทุกเวลาที่คุณต้องการ</p></div>
+            <div class="feature-card"><i class="fa-regular fa-file-excel"></i><h3>ไม่มีสัญญาผูกมัด</h3><p>อิสระในการเป็นสมาชิกโดยไม่มีสัญญาผูกมัด</p></div>
+            <div class="feature-card"><i class="fa-regular fa-thumbs-up"></i><h3>สังคมที่ดี</h3><p>เข้าร่วมฟิตเนสพร้อมเพื่อนๆเพื่อความสนุก</p></div>
+            <div class="feature-card"><i class="fa-solid fa-dumbbell"></i><h3>อุปกรณ์ที่ทันสมัย</h3><p>เรามีอุปกรณ์ออกกำลังกายที่ทันสมัยและครบครัน</p></div>
         </div>
       </div>
     </section>

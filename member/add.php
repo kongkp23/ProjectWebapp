@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 }
 ?>
 <?php include "../shared/header.php"; ?>
+<br>
 <div class="form-container">
     <h1 class="page-title">เพิ่มสมาชิก</h1>
     <?php if(!empty($err)):?><div class="error-message"><?=htmlspecialchars($err)?></div><?php endif;?>
@@ -25,4 +26,4 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
         <button class="btn btn-primary">บันทึก</button>
     </form>
 </div>
-<?php include "../shared/footer.php"; ?>
+<?php include "../shared/footerhome.php"; ?>

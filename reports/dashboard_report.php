@@ -9,7 +9,7 @@ $data1 = $conn->query($sql1)->fetch_all(MYSQLI_ASSOC);
 $sql2 = "SELECT DATE_FORMAT(start_date,'%Y-%m') AS ym, SUM(p.price) AS revenue FROM memberships m JOIN packages p ON p.id=m.package_id GROUP BY ym ORDER BY ym DESC";
 $data2 = $conn->query($sql2)->fetch_all(MYSQLI_ASSOC);
 ?>
-<?php include "../shared/header.php"; ?>
+<?php include "../shared/header.php"; echo '<br>';?>
 
 <h1 class="page-title">รายงานสรุปรวม</h1>
 
@@ -44,6 +44,7 @@ $data2 = $conn->query($sql2)->fetch_all(MYSQLI_ASSOC);
     </div>
   </div>
 </div>
+<br>
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<?php include "../shared/footer.php"; ?>
+<?php include "../shared/footerdashboard.php"; ?>

@@ -2,7 +2,7 @@
 require_once "../includes/conn.php";
 require_once "../includes/auth.php";
 require_login();
-
+echo "<br>";
 $packages = $conn->query("SELECT * FROM packages ORDER BY price ASC")->fetch_all(MYSQLI_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD']==='POST') {
@@ -42,4 +42,4 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
   </form>
 <?php endforeach; ?>
 </div>
-<?php include "../shared/footer.php"; ?>
+<?php include "../shared/footerhome.php"; ?>

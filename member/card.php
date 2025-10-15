@@ -2,7 +2,7 @@
 require_once "../includes/conn.php";
 require_once "../includes/auth.php";
 require_login();
-
+echo "<br>";
 $uid = $_SESSION['user']['id'];
 $sql = "SELECT m.*, p.name AS package_name, p.price
         FROM memberships m
@@ -14,7 +14,7 @@ $stmt->execute();
 $mem = $stmt->get_result()->fetch_assoc();
 ?>
 <?php include "../shared/header.php"; ?>
-<h1 class="page-title">บัตรสมาชิกของฉัน</h1>
+<h1 class="page-title-card">บัตรสมาชิกของฉัน</h1>
 
 <?php if(!$mem): ?>
   <p class="text-muted">ยังไม่มีบัตรสมาชิก <a href="/kos_fitness/packages/select_package.php">เลือกแพ็กเกจ</a> ก่อนนะ</p>
@@ -42,4 +42,4 @@ $mem = $stmt->get_result()->fetch_assoc();
     </div>
   </div>
 <?php endif; ?>
-<?php include "../shared/footer.php"; ?>
+<?php include "../shared/footerhome.php"; ?>
