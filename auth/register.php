@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $stmt->bind_param("ssss", $full,$email,$phone,$pass);
   if ($stmt->execute()) {
     $_SESSION['user'] = [
-      'id'=>$stmt->insert_id,'full_name'=>$full,'email'=>$email,'phone'=>$phone,'password'=>$pass,'role'=>'user'
+      'id'=>$stmt->insert_id,'full_name'=>$full,'email'=>$email,'phone'=>$phone,'role'=>'user'
     ];
     header("Location: /kos_fitness/packages/select_package.php");
     exit;
@@ -23,15 +23,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <?php include "../shared/header.php"; ?>
-<h1 class="text-3xl font-bold mb-6">สมัครสมาชิก</h1>
-<?php if(!empty($err)): ?>
-  <div class="mb-4 text-red-400"><?=htmlspecialchars($err)?></div>
-<?php endif; ?>
-<form class="max-w-md space-y-4" method="post">
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" name="full_name" placeholder="ชื่อ-สกุล" required>
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" type="email" name="email" placeholder="อีเมล" required>
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" name="phone" placeholder="เบอร์โทร">
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" type="password" name="password" placeholder="รหัสผ่าน" required>
-  <button class="px-6 py-2 rounded bg-orange-500 hover:bg-orange-600">สมัคร</button>
-</form>
+<div class="form-container" style="margin: 2rem auto;">
+    <h1 class="page-title">สมัครสมาชิก</h1>
+    <?php if(!empty($err)): ?>
+      <div class="error-message"><?=htmlspecialchars($err)?></div>
+    <?php endif; ?>
+    <form method="post">
+      <div class="form-group">
+        <input class="form-input" name="full_name" placeholder="ชื่อ-สกุล" required>
+      </div>
+      <div class="form-group">
+        <input class="form-input" type="email" name="email" placeholder="อีเมล" required>
+      </div>
+      <div class="form-group">
+        <input class="form-input" name="phone" placeholder="เบอร์โทร">
+      </div>
+      <div class="form-group">
+        <input class="form-input" type="password" name="password" placeholder="รหัสผ่าน" required>
+      </div>
+      <button class="btn btn-primary">สมัคร</button>
+    </form>
+    <p style="margin-top: 1rem;" class="text-muted">มีบัญชีอยู่แล้ว? <a href="login.php">เข้าสู่ระบบ</a></p>
+</div>
 <?php include "../shared/footer.php"; ?>

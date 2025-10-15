@@ -8,17 +8,21 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 }
 ?>
 <?php include "../shared/header.php"; ?>
-<h1 class="text-2xl font-bold mb-4">เพิ่มสมาชิก</h1>
-<?php if(!empty($err)):?><div class="text-red-400 mb-3"><?=htmlspecialchars($err)?></div><?php endif;?>
-<form method="post" class="max-w-md space-y-3">
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" name="full_name" placeholder="ชื่อ-สกุล" required>
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" type="email" name="email" placeholder="อีเมล" required>
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" name="phone" placeholder="เบอร์โทร">
-  <input class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" type="password" name="password" placeholder="รหัสผ่าน">
-  <select class="w-full px-4 py-2 rounded bg-[#0b0b0c] border border-white/10" name="role">
-    <option value="user">user</option>
-    <option value="admin">admin</option>
-  </select>
-  <button class="px-5 py-2 rounded bg-orange-500 hover:bg-orange-600">บันทึก</button>
-</form>
+<div class="form-container">
+    <h1 class="page-title">เพิ่มสมาชิก</h1>
+    <?php if(!empty($err)):?><div class="error-message"><?=htmlspecialchars($err)?></div><?php endif;?>
+    <form method="post">
+        <div class="form-group"><input class="form-input" name="full_name" placeholder="ชื่อ-สกุล" required></div>
+        <div class="form-group"><input class="form-input" type="email" name="email" placeholder="อีเมล" required></div>
+        <div class="form-group"><input class="form-input" name="phone" placeholder="เบอร์โทร"></div>
+        <div class="form-group"><input class="form-input" type="password" name="password" placeholder="รหัสผ่าน (ถ้าต้องการตั้งใหม่)"></div>
+        <div class="form-group">
+            <select class="form-select" name="role">
+                <option value="user">user</option>
+                <option value="admin">admin</option>
+            </select>
+        </div>
+        <button class="btn btn-primary">บันทึก</button>
+    </form>
+</div>
 <?php include "../shared/footer.php"; ?>

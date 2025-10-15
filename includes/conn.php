@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "";          // ใส่รหัสผ่าน MySQL ของเครื่องคุณ
+$pass = ""; // ใส่รหัสผ่าน MySQL ของคุณ
 $db   = "fitness_db";
 
 $conn = new mysqli($host, $user, $pass, $db);

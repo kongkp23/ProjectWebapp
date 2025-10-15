@@ -1,6 +1,7 @@
 </main>
-<footer class="border-t border-gray-800 py-8 text-center text-gray-400">
+<footer class="site-footer">
   <p>&copy; <?=date('Y')?> KOS Fitness. All Rights Reserved.</p>
 </footer>
+<script src="/kos_fitness/assets/main.js"></script>
 </body>
 </html>

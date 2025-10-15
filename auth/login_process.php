@@ -12,10 +12,11 @@ $stmt->execute();
 $res = $stmt->get_result();
 $user = $res->fetch_assoc();
 
-if ($user && $user['password'] === $pass) { // ไม่มี bcrypt ตามคำขอ
+if ($user && $user['password'] === $pass) { // ไม่มีการ hash รหัสผ่าน
   $_SESSION['user'] = $user;
   header("Location: /kos_fitness/home.php");
 } else {
   $_SESSION['error'] = "อีเมลหรือรหัสผ่านไม่ถูกต้อง";
   header("Location: login.php");
 }
+exit;

@@ -14,28 +14,31 @@ $stmt->execute();
 $mem = $stmt->get_result()->fetch_assoc();
 ?>
 <?php include "../shared/header.php"; ?>
-<h1 class="text-3xl font-extrabold mb-6">บัตรสมาชิกของฉัน</h1>
+<h1 class="page-title">บัตรสมาชิกของฉัน</h1>
 
 <?php if(!$mem): ?>
-  <p class="text-gray-300">ยังไม่มีบัตรสมาชิก <a class="text-orange-400 underline" href="/kos_fitness/packages/select_package.php">เลือกแพ็กเกจ</a> ก่อนนะ</p>
+  <p class="text-muted">ยังไม่มีบัตรสมาชิก <a href="/kos_fitness/packages/select_package.php">เลือกแพ็กเกจ</a> ก่อนนะ</p>
 <?php else: ?>
-  <div class="max-w-xl mx-auto bg-gradient-to-br from-[#0b0b0c] to-[#18181b] border border-white/10 rounded-2xl p-6">
-    <div class="flex justify-between items-center">
+  <div class="member-card">
+    <div class="member-card-header">
       <div>
-        <div class="text-sm text-gray-400">KOS FITNESS</div>
-        <div class="text-2xl font-bold"><?=htmlspecialchars($mem['package_name'])?></div>
+        <div class="text-muted" style="font-size: 0.875rem;">KOS FITNESS</div>
+        <div class="member-card-package-name"><?=htmlspecialchars($mem['package_name'])?></div>
       </div>
-      <div class="text-right">
-        <div class="text-gray-400 text-sm">Card No.</div>
-        <div class="font-mono text-xl"><?=htmlspecialchars($mem['card_number'])?></div>
+      <div style="text-align: right;">
+        <div class="text-muted" style="font-size: 0.875rem;">Card No.</div>
+        <div class="member-card-no"><?=htmlspecialchars($mem['card_number'])?></div>
       </div>
     </div>
-    <div class="mt-4 grid grid-cols-2 gap-4 text-gray-300">
-      <div><span class="text-gray-400">ชื่อ</span><br><?=htmlspecialchars($_SESSION['user']['full_name'])?></div>
-      <div><span class="text-gray-400">ราคา</span><br><?=number_format($mem['price'],0)?> บาท/เดือน</div>
-      <div><span class="text-gray-400">เริ่ม</span><br><?=htmlspecialchars($mem['start_date'])?></div>
-      <div><span class="text-gray-400">สิ้นสุด</span><br><?=htmlspecialchars($mem['end_date'])?></div>
-      <div><span class="text-gray-400">สถานะ</span><br><?=htmlspecialchars($mem['status'])?></div>
+    <div class="member-card-details">
+      <div><span class="info-label">ชื่อ</span><?=htmlspecialchars($_SESSION['user']['full_name'])?></div>
+      <div><span class="info-label">ราคา</span><?=number_format($mem['price'],0)?> บาท/เดือน</div>
+      <div><span class="info-label">เริ่ม</span><?=htmlspecialchars($mem['start_date'])?></div>
+      <div><span class="info-label">สิ้นสุด</span><?=htmlspecialchars($mem['end_date'])?></div>
+      <div>
+        <span class="info-label">สถานะ</span>
+        <span class="status-badge <?=($mem['status']==='active' ? 'active' : 'inactive')?>"><?=htmlspecialchars($mem['status'])?></span>
+      </div>
     </div>
   </div>
 <?php endif; ?>
