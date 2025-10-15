@@ -29,7 +29,7 @@
     <div class="header-actions">
       <?php if(!empty($_SESSION['user'])): ?>
         <span class="header-greeting">สวัสดี, <?=htmlspecialchars($_SESSION['user']['full_name'])?></span>
-        <a class="btn btn-secondary" href="/kos_fitness/auth/logout.php">ออกจากระบบ</a>
+        <a class="btn btn-secondary" href="/kos_fitness/auth/logout_confirm.php">ออกจากระบบ</a>
       <?php else: ?>
         <a class="btn btn-outline" href="/kos_fitness/auth/login.php">เข้าสู่ระบบ</a>
         <a class="btn btn-primary" href="/kos_fitness/auth/register.php">สมัครสมาชิก</a>
