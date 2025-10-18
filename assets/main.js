@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             new ApexCharts(membersChartEl, options).render();
         }
 
-        // Revenue by Month Chart (Bar)
+        // Revenue by Month Chart (Bar.)
         const revenueChartEl = document.getElementById('chart-revenue');
         if (revenueChartEl && revenueChartEl.dataset.chartData) {
             const data = JSON.parse(revenueChartEl.dataset.chartData);
