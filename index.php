@@ -117,7 +117,7 @@
                 <div class="pricing-card recommended">
                     <span class="badge">คุ้มที่สุด</span>
                     <h3>Premium Access</h3>
-                    <p class="price recommended-price">2,400 <span>บาท/เดือน</span></p>
+                    <p class="price recommended-price">2,300 <span>บาท/เดือน</span></p>
                     <p class="price-strikethrough">จากปกติ 2,800 บาท</p>
                     <ul class="checklist">
                         <li><strong>สิทธิประโยชน์ทั้งหมดของ Standard</strong></li>
