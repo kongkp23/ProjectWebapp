@@ -183,7 +183,7 @@ button.btn {
 .hero-content { position: relative; z-index: 10; animation: fadeInUp 1s ease-out forwards; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-.hero-subtitle { margin-top: 1.5rem; max-width: 600px; font-size: clamp(1rem, 3vw, 1.25rem); color: #d4d4d8; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.hero-subtitle { margin: 1.5rem auto 0 auto;max-width: 600px; font-size: clamp(1rem, 3vw, 1.25rem); color: #d4d4d8; text-shadow: 0 1px 3px rgba(0,0,0,0.5);}
 .hero-action { margin-top: 2.5rem; }
 .features-section, .pricing-section { background-color: var(--color-darker); padding: 5rem 0; }
 .clubs-section { padding: 5rem 0; }
